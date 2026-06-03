@@ -2,12 +2,14 @@ package main
 
 import "fmt"
 
-func divide(a, b float64) (float64, string) {
+func divide(a, b float32) (float32, error) {
 	if b == 0 {
-		err := "denominator should not be zero"
-		return 0, ("Error: " + err)
+		// err := "denominator should not be zero"
+		// return 0, fmt.Errorf(err)
+
+		return 0, fmt.Errorf("denominator should not be zero")
 	}
-	return a / b, "nil"
+	return a / b, nil
 }
 func main() {
 	fmt.Println("Starting Error handling")
@@ -16,5 +18,7 @@ func main() {
 
 	fmt.Println("Division is ", div)
 
-	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
