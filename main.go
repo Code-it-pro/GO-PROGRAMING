@@ -1,8 +1,8 @@
 package main
 
 import (
-	finalimport "PracticeGo/Final_Import"
 	p2 "PracticeGo/Prgram2"
+	revision "PracticeGo/Revision/test"
 	"fmt"
 )
 
@@ -11,5 +11,5 @@ func main() {
 
 	p2.PrintMessage("Hello from Program 2")
 
-	finalimport.Final("FInal Import")
+	revision.Rev("Revision Complete")
 }
