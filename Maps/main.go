@@ -38,4 +38,15 @@ func main() {
 
 	fmt.Println(len(balance))
 
+	//Different way to initialise
+
+	name := map[string]int{
+		"Annie":  23,
+		"Doobie": 234,
+	}
+
+	for n, value := range name {
+		fmt.Printf("%s : %d \n", n, value)
+	}
+
 }
