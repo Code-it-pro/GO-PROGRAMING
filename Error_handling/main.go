@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func divide(a, b float32) (float32, error) {
 	if b == 0 {
@@ -13,10 +15,18 @@ func divide(a, b float32) (float32, error) {
 }
 func main() {
 	fmt.Println("Starting Error handling")
+	var num1, num2 float32
+	fmt.Println("Enter a Numerator:")
+	fmt.Scan(&num1)
+	fmt.Println("Enter Denominator:")
+	fmt.Scan(&num2)
 
-	div, err := divide(10, 0)
+	fmt.Printf("Numerator : %f\n", num1)
+	fmt.Printf("Denominator : %f\n", num2)
 
-	fmt.Println("Division is ", div)
+	div, err := divide(num1, num2)
+
+	fmt.Printf("Division is %f", div)
 
 	if err != nil {
 		fmt.Println(err)
