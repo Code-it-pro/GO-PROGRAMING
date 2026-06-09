@@ -7,6 +7,7 @@ func main() {
 
 	var arr [5]int
 	arr2 := [5]int{1, 2, 3, 4, 5}
+	arr3 := make([]string, 5)
 
 	fmt.Println(arr)
 	fmt.Println(arr2)
@@ -16,8 +17,12 @@ func main() {
 
 	arr2[2] = 52352
 
+	arr3[0] = "Gaming"
+	arr3 = append(arr3, "Gagan", "Shona", "Some1", "Some2")
+
 	arr[3] = 53
 	arr[0] = 352
 	fmt.Println(arr)
+	fmt.Println(arr3)
 
 }
