@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Starting with Alice in Go Programing")
+	fmt.Println("Starting with Slice in Go Programing")
 
 	// initializing a slice
 	// First way
