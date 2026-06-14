@@ -5,6 +5,24 @@ import "fmt"
 func main() {
 	fmt.Println("Starting Struct or Structure")
 
+	// type someone struct {
+	// 	name string
+	// 	age  int
+	// }
+
+	// var apple = someone{
+	// 	name: "apple",
+	// 	age:  34,
+	// }
+
+	// Some := someone{
+	// 	name: "something",
+	// 	age:  34,
+	// }
+
+	// fmt.Println(Some)
+	// fmt.Println(apple)
+
 	// type person struct {
 	// 	name   string
 	// 	age    int
