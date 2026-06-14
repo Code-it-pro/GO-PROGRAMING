@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -44,12 +45,15 @@ func main() {
 
 	fmt.Println("Enter name : ")
 	name, _ := reader.ReadString('\n')
+	name = strings.TrimSpace(name)
 
 	fmt.Println("Enter Age : ")
 	age, _ := reader.ReadString('\n')
+	age = strings.TrimSpace(age)
 
 	fmt.Println("Enter isStudent : ")
 	isStudent, _ := reader.ReadString('\n')
+	isStudent = strings.TrimSpace(isStudent)
 
 	fmt.Println("Name : ", name)
 	fmt.Println("Age : ", age)
