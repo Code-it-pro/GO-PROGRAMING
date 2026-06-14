@@ -1,0 +1,109 @@
+================================================================================
+                        GO PRACTICE EXERCISES - SET 2
+================================================================================
+This set focuses on Pointers, Structs (including Nested Structs), Functions 
+with Multiple Return Values, and proper Error Handling in Go.
+
+--------------------------------------------------------------------------------
+1. THE BANK ACCOUNT MANAGER (Pointers, Structs, & Error Handling)
+--------------------------------------------------------------------------------
+Goal: 
+Practice modifying struct fields using pointer receivers or pointer arguments, 
+and learn to handle errors *before* printing success outputs.
+
+Requirements:
+- Define a `BankAccount` struct with fields:
+  * `Owner` (string)
+  * `Balance` (float64)
+  * `AccountNumber` (string)
+- Write a function:
+  `func Deposit(acc *BankAccount, amount float64) error`
+  * If the amount is less than or equal to 0, return an error: "deposit amount must be greater than zero".
+  * Otherwise, add the amount to the balance and return `nil`.
+- Write a function:
+  `func Withdraw(acc *BankAccount, amount float64) error`
+  * If the amount is less than or equal to 0, return an error: "withdrawal amount must be greater than zero".
+  * If the balance is less than the amount, return an error: "insufficient balance".
+  * Otherwise, deduct the amount from the balance and return `nil`.
+- In `main`:
+  * Initialize a bank account using a pointer (e.g., `acc := &BankAccount{...}`).
+  * Perform a deposit and a withdrawal.
+  * Check the returned errors! Only print the success message and new balance if the error is `nil`. Otherwise, print the error.
+
+Hint:
+Make sure you check the error *first* before printing results, unlike the 
+previous code in your `Error_handling/main.go`!
+
+--------------------------------------------------------------------------------
+2. CLASSROOM GRADE TRACKER (Maps, Structs, & Slices)
+--------------------------------------------------------------------------------
+Goal:
+Practice using slices inside structs, storing structs in a map, and handling
+non-existent keys safely.
+
+Requirements:
+- Define a `Student` struct with:
+  * `Name` (string)
+  * `Grades` ([]float64)
+- Write a function:
+  `func CalculateAverage(grades []float64) (float64, error)`
+  * If the slice is empty, return `0.0` and an error: "no grades recorded".
+  * Otherwise, calculate and return the average and `nil`.
+- Write a function:
+  `func GetStudentAverage(classroom map[string]Student, studentID string) (float64, error)`
+  * Check if the studentID exists in the map.
+  * If not present, return `0.0` and an error: "student not found".
+  * If present, call `CalculateAverage` on their grades and return the result.
+- In `main`:
+  * Create a map `classroom := make(map[string]Student)` or initialize it inline.
+  * Add 3 students with some grades (e.g., `studentID "S101" -> Student{Name: "Gagan", Grades: []float64{90, 85, 95}}`).
+  * Query average grades for a valid student ID and an invalid student ID, and handle the error correctly.
+
+--------------------------------------------------------------------------------
+3. IN-PLACE VALUE SCALER (Pointers, Slices, & Loops)
+--------------------------------------------------------------------------------
+Goal:
+Understand how to mutate elements inside a slice or array using pointers in loops.
+
+Requirements:
+- Write a function:
+  `func ScaleValue(val *float64, factor float64)`
+  * This function multiplies the value pointed to by `val` by `factor`.
+- In `main`:
+  * Create a slice of float64 representing prices: `prices := []float64{10.0, 20.5, 99.9, 120.0}`.
+  * Print the original prices.
+  * Use a loop to iterate through the slice and multiply each price by `1.1` (applying a 10% tax). 
+    *Hint:* To modify the actual elements, you must pass the pointer to each index (e.g., `&prices[i]`) to `ScaleValue`.
+  * Print the prices after the scaling loop to prove they were modified in-place.
+
+--------------------------------------------------------------------------------
+4. THE LIBRARY SYSTEM (Slices of Pointers & Modifying States)
+--------------------------------------------------------------------------------
+Goal:
+Understand the difference between passing structs by value versus passing pointers
+when dealing with slices of structs.
+
+Requirements:
+- Define a `Book` struct with fields:
+  * `Title` (string)
+  * `Author` (string)
+  * `IsBorrowed` (bool)
+- Write a function:
+  `func BorrowBook(books []*Book, title string) error`
+  * Note that `books` is a slice of *pointers* to Book (`[]*Book`). Why? Because we want to modify the books directly.
+  * Iterate through the books. If the title matches:
+    - If `IsBorrowed` is already true, return an error: "book is already borrowed".
+    - Otherwise, set `IsBorrowed = true` and return `nil`.
+  * If the loop finishes and no book title matches, return an error: "book not found in library".
+- In `main`:
+  * Initialize a slice of book pointers:
+    ```go
+    library := []*Book{
+        {Title: "The Go Programming Language", Author: "Donovan & Kernighan", IsBorrowed: false},
+        {Title: "Clean Code", Author: "Robert C. Martin", IsBorrowed: false},
+    }
+    ```
+  * Try to borrow "Clean Code" once (should succeed).
+  * Try to borrow "Clean Code" again (should return an error).
+  * Try to borrow "Rust Programming" (should return an error: book not found).
+  * Print the status of the library books at the end to check if `IsBorrowed` changed correctly.
