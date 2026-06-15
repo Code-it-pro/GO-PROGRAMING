@@ -10,8 +10,6 @@ type BankAccount struct {
 
 func Deposit(acc *BankAccount, amount float64) error {
 
-	fmt.Println(*acc)
-
 	if amount <= 0 {
 		return fmt.Errorf("deposit amount must be greatr than zero")
 	} else {
