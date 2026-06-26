@@ -10,8 +10,9 @@ func main() {
 	// 	fmt.Println("encountered an error", error)
 	// }
 
+	// fmt.Println(file)
 	// fmt.Println("File created successfully")
-	// // Ensure the file is closed when main returns.
+	// Ensure the file is closed when main returns.
 	// defer file.Close()
 
 	// content := "Hello World!"
